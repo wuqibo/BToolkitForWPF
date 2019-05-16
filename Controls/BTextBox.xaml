@@ -1,0 +1,34 @@
+﻿<btoolkit:BTextBoxBase x:Class="BToolkitForWPF.Controls.BTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:btoolkit="clr-namespace:BToolkitForWPF.Controls"
+             mc:Ignorable="d" HorizontalContentAlignment="Center" Foreground="#666666">
+
+    <btoolkit:BTextBoxBase.Template>
+        <ControlTemplate TargetType="btoolkit:BTextBoxBase">
+            <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="1" CornerRadius="{TemplateBinding CornerRadius}">
+                <Grid>
+                    <Border Visibility="{TemplateBinding PlaceholderVisible}">
+                        <Border.Background>
+                            <VisualBrush TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Center">
+                                <VisualBrush.Visual>
+                                    <TextBlock Text="{TemplateBinding Placeholder}"/>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Border.Background>
+                    </Border>
+                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </btoolkit:BTextBoxBase.Template>
+    <!--控制是否允许复制粘贴剪切-->
+    <btoolkit:BTextBoxBase.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Paste" CanExecute="CommandBinding_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Cut" CanExecute="CommandBinding_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Copy" CanExecute="CommandBinding_CanExecute" />
+    </btoolkit:BTextBoxBase.CommandBindings>
+
+</btoolkit:BTextBoxBase>

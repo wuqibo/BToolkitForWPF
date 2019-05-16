@@ -1,0 +1,33 @@
+﻿<btoolkit:BButtonBase x:Class="BToolkitForWPF.Controls.BButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:btoolkit="clr-namespace:BToolkitForWPF.Controls"
+             mc:Ignorable="d">
+
+    <btoolkit:BButtonBase.Template>
+        <ControlTemplate TargetType="btoolkit:BButtonBase">
+            <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5">
+                <Image x:Name="img" Source="{TemplateBinding Image}" Stretch="Fill" Visibility="Visible" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+                <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Visibility="Hidden" />
+                <TextBlock x:Name="text" Text="{TemplateBinding Content}" Block.TextAlignment="{TemplateBinding TextAlignment}" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Margin="0,-1,0,0"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Image" Value="{x:Null}">
+                    <Setter TargetName="img" Property="Visibility" Value="Hidden" />
+                    <Setter TargetName="border" Property="Visibility" Value="Visible" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="img" Property="Opacity" Value="0.8" />
+                    <Setter TargetName="border" Property="Opacity" Value="0.8" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="img" Property="Opacity" Value="1" />
+                    <Setter TargetName="border" Property="Opacity" Value="1" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </btoolkit:BButtonBase.Template>
+
+</btoolkit:BButtonBase>

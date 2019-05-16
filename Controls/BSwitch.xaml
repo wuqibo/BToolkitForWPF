@@ -1,0 +1,31 @@
+﻿<btoolkit:BSwitchBase x:Class="BToolkitForWPF.Controls.BSwitch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:btoolkit="clr-namespace:BToolkitForWPF.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="200">
+    <btoolkit:BSwitchBase.Template>
+        <ControlTemplate TargetType="btoolkit:BSwitchBase">
+            <Grid>
+                <!--透明热区-->
+                <Grid Background="#00000000"/>
+                <!--打开的状态（彩色）-->
+                <Border Visibility="{TemplateBinding OnStyleVisibility}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <DockPanel>
+                        <Ellipse DockPanel.Dock="Right"  Margin="{TemplateBinding BarMargin}" HorizontalAlignment="Right" Fill="{TemplateBinding Foreground}" Width="{TemplateBinding BarSize}" Height="{TemplateBinding BarSize}" />
+                        <TextBlock DockPanel.Dock="Left" Text="ON" Block.TextAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding TextColor}"/>
+                    </DockPanel>
+                </Border>
+                <!--关闭的状态（黑白）-->
+                <Border Visibility="{TemplateBinding OffStyleVisibility}" Background="White" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="#999999" BorderThickness="{TemplateBinding BorderThickness}">
+                    <DockPanel>
+                        <Ellipse DockPanel.Dock="Left" Margin="{TemplateBinding BarMargin}" HorizontalAlignment="Left" Fill="#999999" Width="{TemplateBinding BarSize}" Height="{TemplateBinding BarSize}" />
+                        <TextBlock DockPanel.Dock="Right" Text="OFF" Block.TextAlignment="Center" VerticalAlignment="Center" Foreground="#999999"/>
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </ControlTemplate>
+    </btoolkit:BSwitchBase.Template>
+</btoolkit:BSwitchBase>

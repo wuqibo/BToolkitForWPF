@@ -1,0 +1,17 @@
+﻿<btoolkit:NoBorderWindow
+        x:Class="BToolkitForWPF.Controls.PhotoViewer"
+        Style="{StaticResource NoBorderWindow}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:btoolkit="clr-namespace:BToolkitForWPF.Controls" 
+        xmlns:local="clr-namespace:BToolkitForWPF.Controls"
+        mc:Ignorable="d"
+        Title="PhotoViewer" Height="700" Width="1000">
+    <Grid Background="Black" MouseDown="Grid_MouseDown" MouseWheel="Grid_MouseWheel">
+        <Image x:Name="img" Source="/Res/Images/Avatars/girl_07.png" />
+        <btoolkit:BButton HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="Hand" Width="35" Height="35" Background="#00000000" Foreground="#55FFFFFF" BorderThickness="0" FontSize="18" Content="☐" Click="Btn_Maximized_Click" Margin="0,0,30,0"/>
+        <btoolkit:BButton HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="Hand" Width="35" Height="35" Background="#00000000" Foreground="#55FFFFFF" BorderThickness="0" FontSize="14" Content="✖" Click="Btn_Close_Click"/>
+    </Grid>
+</btoolkit:NoBorderWindow>
