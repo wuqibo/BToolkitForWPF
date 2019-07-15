@@ -73,27 +73,34 @@ namespace BToolkitForWPF.Network
         /// </summary>
         public static async void Get(string url, Dictionary<string, string> headers, HttpCallbackAction HttpCallback)
         {
-            using (HttpClient httpClient = new HttpClient())
+            try
             {
-                httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
-                if (headers != null)
+                using (HttpClient httpClient = new HttpClient())
                 {
-                    foreach (var header in headers)
+                    httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
+                    if (headers != null)
                     {
-                        httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
+                        foreach (var header in headers)
+                        {
+                            httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
+                        }
+                    }
+                    HttpResponseMessage response = await httpClient.GetAsync(url);
+                    string statusCode = response.StatusCode.ToString();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string result = await response.Content.ReadAsStringAsync();
+                        HttpCallback(ResultType.Success, result);
+                    }
+                    else
+                    {
+                        HttpCallback(ResultType.Error, response.Content.ToString());
                     }
                 }
-                HttpResponseMessage response = await httpClient.GetAsync(url);
-                string statusCode = response.StatusCode.ToString();
-                if (response.IsSuccessStatusCode)
-                {
-                    string result = await response.Content.ReadAsStringAsync();
-                    HttpCallback(ResultType.Success, result);
-                }
-                else
-                {
-                    HttpCallback(ResultType.Error, response.Content.ToString());
-                }
+            }
+            catch
+            {
+                HttpCallback(ResultType.Error, "");
             }
         }
 
